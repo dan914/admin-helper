@@ -13,6 +13,10 @@ jobs:
   build-and-deploy:
     name: Build and Deploy
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pages: write
+      id-token: write
     
     steps:
       # Step 1: Get the code
@@ -38,7 +42,7 @@ jobs:
       - name: 🔨 Build Flutter web
         run: |
           flutter build web --release \
-            --base-href "/" \
+            --base-href "/admin-helper/" \
             --web-renderer canvaskit
       
       # Step 6: Prepare for deployment
